@@ -30,6 +30,7 @@ body{
 	border: 2px solid #25242a;
 	border-radius: 5px;
 	outline: none;
+	color: black;
 }
 
 .container {
@@ -46,6 +47,11 @@ body{
 	margin: 10px;
 	position: relative;
 }
+
+.movie:hover{
+	transform: translateY(-15px);
+}
+
 .movie__cover-inner {
 	position: relative;
 	max-height: 360px;
@@ -55,19 +61,17 @@ body{
 	height: 100%;
 }
 
-.movie__cover:hover{
-	transform: translateY(-15px);
-}
 .movie__info {
 	padding: 10px 0;
+	word-break:break-word;
 }
 .movie__title {
 	font-size: 16px;
+	color: rgb(255, 190, 106);
+	margin-bottom: 5px;
 }
 .movie__category {
 	font-size: 14px;
-	max-width: 240px;
-	/* word-wrap: break-word; */
 }
 .movie__average {
 	position: absolute;
