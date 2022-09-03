@@ -1,14 +1,12 @@
 @import url('reset.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-body{
+body {
 	background-color: #25242a;
 	font-family: 'Montserrat', sans-serif;
 	color: white;
 }
 
-.header {
-}
 .header__content {
 	display: flex;
 	justify-content: space-between;
@@ -16,11 +14,12 @@ body{
 	padding: 16px;
 	max-height: 60px;
 }
+
 .header__logo {
 	font-size: 32px;
 }
 
-.header__logo:visited{
+.header__logo:visited {
 	color: inherit;
 }
 
@@ -37,18 +36,20 @@ body{
 	max-width: 1200px;
 	margin: 0 auto;
 }
+
 .movies {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
+
 .movie {
 	max-width: 240px;
 	margin: 10px;
 	position: relative;
 }
 
-.movie:hover{
+.movie:hover {
 	transform: translateY(-15px);
 }
 
@@ -56,6 +57,7 @@ body{
 	position: relative;
 	max-height: 360px;
 }
+
 .movie__cover {
 	max-width: 100%;
 	height: 100%;
@@ -63,16 +65,19 @@ body{
 
 .movie__info {
 	padding: 10px 0;
-	word-break:break-word;
+	word-break: break-word;
 }
+
 .movie__title {
 	font-size: 16px;
 	color: rgb(255, 190, 106);
 	margin-bottom: 5px;
 }
+
 .movie__category {
 	font-size: 14px;
 }
+
 .movie__average {
 	position: absolute;
 	top: 10px;
@@ -86,6 +91,7 @@ body{
 	background-color: #1a191f;
 	font-size: 14px;
 }
+
 .movie__average--green {
 	border: 1px solid green;
 }
@@ -97,3 +103,74 @@ body{
 .movie__average--red {
 	border: 1px solid red;
 }
+
+/* Modal start*/
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: width 2s;
+}
+
+.modal--show {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal__card {
+	background-color: #ffffff;
+	max-width: 600px;
+	padding: 16px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+	background-color: #1a191f;
+	color: #ffffff;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal__card h2{
+	margin: 0 auto;
+	font-size: 24px;
+}
+
+.modal__movie-backdrop {
+	width: 200px;
+	margin: 0 auto
+}
+
+.modal__movie-info {
+	margin-left: 20px;
+}
+
+.modal__button-close {
+	padding: 5px;
+	margin: 10px;
+	align-self: center;
+	background-color: white;
+	color: black;
+	border-radius: 5px;
+}
+
+.modal__movie-site a{
+	color: #ffd80e
+}
+
+/* Modal end*/
+
+ul li {
+	padding: 5px;
+}
+
+.stop-scrolling {
+	height: 100%;
+	overflow: hidden;
+}
+
