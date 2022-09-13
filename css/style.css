@@ -41,6 +41,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	margin-bottom: 50px;
 }
 
 .movie {
@@ -136,7 +137,7 @@ body {
 	flex-direction: column;
 }
 
-.modal__card h2{
+.modal__card h2 {
 	margin: 0 auto;
 	font-size: 24px;
 }
@@ -159,7 +160,7 @@ body {
 	border-radius: 5px;
 }
 
-.modal__movie-site a{
+.modal__movie-site a {
 	color: #ffd80e
 }
 
@@ -174,3 +175,22 @@ ul li {
 	overflow: hidden;
 }
 
+.pagination {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.pagination__button{
+	min-width: 50px;
+	background-color: #fff;
+	color: #111;
+	margin-right: 20px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.pagination__button:last-child{
+	margin-right: 0;
+}

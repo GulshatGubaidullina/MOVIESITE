@@ -1,27 +1,52 @@
 const API_KEY = '22cd9319-2dd0-4d4d-b446-c98d6c5833f2';
-const API_URL_POPULAR = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1';
+const API_URL_POPULAR = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=';
 const API_URL_SEARCH = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=';
 const API_URL_MOVIE_DETAILS = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/';
 
 const form = document.querySelector("form");
 const search = document.querySelector(".header__search");
+const btnsPagination = document.querySelector(".pagination");
 
+const filmsNumber = 100;
+let moviesPerPage = 20;
+let currentPage = 1;
+
+addBtnPagination();
 getMovies(API_URL_POPULAR);
 
+function addBtnPagination() {
+
+	for (let currentBtn = 1; currentBtn * moviesPerPage < filmsNumber; currentBtn++) {
+		const btnPagination = document.createElement("div");
+		btnPagination.classList.add("pagination__button");
+		btnPagination.innerHTML = `
+		<button id="${currentBtn}">${currentBtn}</button>
+		`
+		btnsPagination.appendChild(btnPagination);
+		console.log(currentBtn);
+	}
+}
+
+btnsPagination.addEventListener("click", (e) => {
+	currentPage = +e.target.id;
+	getMovies(API_URL_POPULAR);
+})
+
 async function getMovies(url) {
-	const resp = await fetch(url, {
+	const resp = await fetch(url + currentPage, {
 		headers: {
 			"Content-Type": "application/json",
 			"X-API-KEY": API_KEY,
 		},
 	});
+
 	const respData = await resp.json();
 	showMovies(respData);
 }
 
 function showMovies(data) {
 	const moviesEl = document.querySelector(".movies");
-
+	moviesEl.innerHTML = "";
 	document.querySelector(".movies").innerHTML = "";
 
 	data.films.forEach(movie => {
@@ -42,6 +67,8 @@ function showMovies(data) {
 		movieEl.addEventListener("click", () => openModal(movie.filmId));
 		moviesEl.appendChild(movieEl);
 	});
+
+
 }
 
 function showClassByRate(rating) {
@@ -75,7 +102,7 @@ async function openModal(id) {
 	});
 	const respData = await resp.json();
 
-	console.log(id);
+	//console.log(id);
 	modalEl.classList.add("modal--show");
 	document.body.classList.add("stop-scrolling");
 
@@ -93,7 +120,7 @@ async function openModal(id) {
 						<li class="modal__movie-site">Сайт -
 							<a href="${respData.webUrl}">${respData.webUrl}</a>
 						</li>
-						<li class="modal__movie-overview">${respData.description}</li>
+						<li class="modal__movie-overview">${respData.description ? respData.description : ""}</li>
 					</ul>
 					<button class="modal__button-close">Закрыть</button>
 				</div>
